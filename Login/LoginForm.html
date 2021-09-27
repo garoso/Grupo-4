@@ -16,21 +16,26 @@
          
          <div class="input-contenedor">
              <i class="fas fa-user icon"></i>
-             <input type="text" placeholder="Nombre Completo">
-             
-             </div>
-             
-             <div class="input-contenedor">
-             <i class="fas fa-envelope icon"></i>
-             <input type="text" placeholder="Correo Electronico">
+             <input type="text" placeholder="Nombre de Usuario">
              
              </div>
              
              <div class="input-contenedor">
             <i class="fas fa-key icon"></i>
              <input type="password" placeholder="Contraseña">
-             
-             </div>
+            </div>
+
+             <div class="input-contenedor">
+              <i class="fas fa-envelope icon"></i>
+              <input type="text" placeholder="Rol">
+                <select name="rol">
+                    <!-- Se usa outgroup en caso de que dentro del seleccionable se quieran meter categorias -->
+                    <option value="Administrador">Administrador</option>
+                    <option value="Vendedor">Vendedor</option>
+                    <option value="Domiciliario">Domiciliario</option>
+                </select>
+              </div>    
+              
              <input type="submit" value="Registrarse" class="button">
              <p>¿Ya tienes una cuenta?<a class="link" href="LoginForm2.html">Iniciar Sesion</a></p>
          </div>
