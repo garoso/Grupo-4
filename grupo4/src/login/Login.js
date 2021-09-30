@@ -5,7 +5,7 @@ function Login(){
     <div className="Login">
       <div class="container ">
         <div class="row">
-          <div class="col-sm-6 offset-sm-3">
+          <div class="col-sm-4 offset-sm-4 shadow mt-5 p-4 rounded">
             <form class="container-md">
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -19,7 +19,7 @@ function Login(){
                 <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-dark btn-block">Submit</button>
             </form>
           </div>
         </div>
