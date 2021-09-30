@@ -5,12 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Login from './login/Login.js'
 import Navbar from './Navbar/Navbar.js'
+import SignUp from './SignUp/SignUp.js'
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Navbar />
-    <Login />
+    <SignUp />
   </React.StrictMode>,
   document.getElementById('root')
 );
