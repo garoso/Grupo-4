@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Login from './login/Login.js'
+import Navbar from './Navbar/Navbar.js'
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Navbar />
+    <Login />
   </React.StrictMode>,
   document.getElementById('root')
 );
