@@ -1,59 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
-</head>
-<body>
-    <form class="formulario">
-    
-        <h1>Registro</h1>
-         <div class="contenedor">
-         
-         <div class="input-contenedor">
-             <i class="fas fa-user icon"></i>
-             <input type="text" placeholder="Nombre de Usuario">
-             
-             </div>
-             
-             <div class="input-contenedor">
-            <i class="fas fa-key icon"></i>
-             <input type="password" placeholder="Contraseña">
-            </div>
 
-             <div class="input-contenedor">
-              <i class="fas fa-envelope icon"></i>
-              <input type="text" placeholder="Rol">
-                <select name="rol">
-                    <!-- Se usa outgroup en caso de que dentro del seleccionable se quieran meter categorias -->
-                    <option value="Administrador">Administrador</option>
-                    <option value="Vendedor">Vendedor</option>
-                    <option value="Domiciliario">Domiciliario</option>
-                </select>
-              </div>    
-              
-             <input type="submit" value="Registrarse" class="button">
-             <p>¿Ya tienes una cuenta?<a class="link" href="LoginForm2.html">Iniciar Sesion</a></p>
-         </div>
-        </form>
-        <script>
-            const pass_field = document.querySelector('.pass-key');
-            const showBtn = document.querySelector('.show');
-            showBtn.addEventListener('click', function(){
-             if(pass_field.type === "password"){
-               pass_field.type = "text";
-               showBtn.textContent = "HIDE";
-               showBtn.style.color = "#3498db";
-             }else{
-               pass_field.type = "password";
-               showBtn.textContent = "SHOW";
-               showBtn.style.color = "#222";
-             }
-            });
-         </script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <link rel="stylesheet" href="style.css">
+ <!-- Bootstrap CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+</head>
+
+<body>
+  <form class="formulario">
+
+    <h1>Registro</h1>
+    <div class="contenedor">
+
+      <div class="input-contenedor">
+        <i class="fas fa-user icon"></i>
+        <input type="text" placeholder="Nombres y Apellidos Completos">
+
+      </div>
+
+      <div class="input-contenedor">
+        <i class="fas fa-portrait icon"></i>
+        <input type="tel" placeholder="Documento de Identidad">
+
+      </div>
+
+      <div class="input-contenedor">
+        <i class="fas fa-mobile-alt icon"></i>
+        <input type="tel" placeholder="Número de Celular">
+
+      </div>
+
+      <div class="input-contenedor">
+        <i class="fas fa-key icon"></i>
+        <input type="password" placeholder="Contraseña">
+      </div>
+
+      <div class="input-contenedor">
+        <i class="fas fa-users icon"></i>
+        <select name="rol" class="text">
+          <option value="Administrador" class="text">Administrador</option>
+          <option value="Vendedor" class="text">Vendedor</option>
+          <option value="Domiciliario" class="text">Domiciliario</option>
+        </select>
+      </div>
+
+      <div class="input-contenedor">
+        <i class="fas fa-calendar-alt icon"></i>
+        <input type="date" placeholder="Fecha">
+      </div>
+
+      <input type="submit" value="Registrarse" class="button">
+      <p>¿Ya tienes una cuenta?<a class="link" href="LoginForm2.html">Iniciar Sesion</a></p>
+    </div>
+  </form>
 </body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
 </html>
