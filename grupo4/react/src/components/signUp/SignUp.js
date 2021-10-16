@@ -7,7 +7,7 @@ function SignUp(){
 
   useEffect(() => {
       getUsersPendientes();
-  }, [])
+  }, []);
 
 
   const getUsersPendientes = async () => {
