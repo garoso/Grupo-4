@@ -14,5 +14,6 @@ router.delete('productos/:id', ProductController.delete);
 // Users
 router.post('/addUser', UserController.create);
 router.post('/editClient', UserController.edit);
+router.get('/pendientes', UserController.getUsers);
 
 module.exports = router;

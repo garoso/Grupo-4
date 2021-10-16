@@ -1,5 +1,6 @@
 const { Conexiones, Usuarios } = require('../models/index');
 const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 module.exports = {
     async create(req, res) {
@@ -42,7 +43,9 @@ module.exports = {
         }
     },
 
-    async update(req, res) {
+    async edit(req, res) {
+        console.log("EDITT");
+        console.log(req.body)
         console.log('req', req.body);
 
         var response = ''
@@ -71,5 +74,26 @@ module.exports = {
                 res.json(result);
             });
         }        
+    },
+
+    async getUsers(req, res) {
+
+        try {
+            var users = ''
+
+            users = await Conexiones.findAll();
+
+            if (users.length === 0) {
+                return null;
+            }
+
+            console.log('Los usuarios son:', users);
+
+            res.json({users: users});           
+
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({error: 'Ha ocurrido un error.'});
+        }
     }
 }

@@ -2,7 +2,7 @@ const { Usuarios } = require('../models/index');
 const Sequelize = require('sequelize');
 
 module.exports = {
-    async create(req, res) {
+    async getUsers(req, res) {
         console.log('req', req);
 
         try {
@@ -11,7 +11,7 @@ module.exports = {
             users = await Usuarios.findAll();
 
             if (response.length === 0) {
-                return;
+                return null;
             }
 
             console.log('El usuario ya existe.', users);
