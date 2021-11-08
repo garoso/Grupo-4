@@ -38,38 +38,37 @@ function SignUp(){
               </div>
               <div class="col-md-6 mt-4">
                 <label for="inputName" class="form-label">Nombres</label>
-                <input type="name" class="form-control" id="inputName"/>
+                <input type="name" class="form-control" name="name"  id="inputName"/>
               </div>
               <div class="col-md-6 mt-4">
                 <label for="inputLastName" class="form-label">Apellidos</label>
-                <input type="name" class="form-control" id="inputPassword4"/>
+                <input type="name" class="form-control" name="lastname" id="inputLastname"/>
               </div>
               <div class="col-md-6">
                 <label for="inputEmail4" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="inputEmail4"/>
+                <input type="email" class="form-control" name="email" id="inputEmail4"/>
               </div>
               <div class="col-md-6">
                 <label for="inputRol" class="form-label">Rol</label>
-                <select class="form-select" id="inputRol">
-                  <option value="0">Administrador</option>
-                  <option value="1">Empleado</option>
-                  <option value="2">Domiciliario</option>
+                <select class="form-select" id="inputRol" name="role">
+                  <option value="0">Vendedor</option>
+                  <option value="1">Administrador</option>
                 </select>
               </div>
               <div class="col-12 mt-3">
                 <label for="inputAddress" class="form-label">Dirección</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"/>
+                <input type="address" class="form-control" id="inputAddress" name="address"  placeholder="1234 Main St"/>
               </div>
               <div class="col-md-6 mt-2">
                 <label for="inputCity" class="form-label">Ciudad</label>
-                <input type="text" class="form-control" id="inputCity"/>
+                <input type="city" class="form-control" name="city" id="inputCity"/>
               </div>
               <div class="col-md-6 mt-2">
                 <label for="inputPhone" class="form-label">Teléfono</label>
-                <input type="phone" class="form-control" id="inputAddress2" placeholder="Número de teléfono"/>
+                <input type="phone" class="form-control" id="inputAddress2" name="phoneNumber" placeholder="Número de teléfono"/>
               </div>
               <div class="col-12 mt-4">
-                <button type="submit" class="btn btn-dark btn-block">Registrar</button>
+                <button class="btn btn-dark btn-block" id="post-btn" type="submit">Registrar</button>
               </div>
             </form>
           </div>

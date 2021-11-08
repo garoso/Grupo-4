@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router';
 import GoogleLogin from 'react-google-login';
 import cookie from 'react-cookies';
+import auth from "./auth";
+import LoginIcon from '../../images/user.png';
+import '../../App.css';
 
 const Login = () => {
 
@@ -11,6 +14,7 @@ const Login = () => {
         if (response.tokenId) {
             try {
                 cookie.save('token', response.tokenId);
+
                 const user = await fetch('http://localhost:5000/api/addUser', {
                     method: 'POST',
                     headers: {
@@ -25,19 +29,19 @@ const Login = () => {
                 });
 
                 const content = await user.json();
-
-                if (content.role === 0) {
+                if (content.role === 0){
+                    console.log("Vendedor conectado.");
+                    auth.login(() => {
+                        history.push('/vendedor');
+                    });                    
+                    return;
+                } else if (content.role === 1) {
                     console.log("Administrador conectado.");
-                    history.push('/admin');
+                    auth.login(() => {
+                        history.push('/admin');
+                    });  
                     return;
-                } else if (content.role === 1){
-                    console.log("Empleado conectado.");
-                    history.push('/empleado');
-                    return;
-                } else if (content.role === 2){
-                    console.log("Domiciliario conectado.");
-                    history.push('/domiciliario');
-                } 
+                }
 
                 console.log("Asignación pendiente.");
                 history.push('/pendiente');
@@ -49,17 +53,27 @@ const Login = () => {
     };
 
     return (
-        <div className="loginComponent">
-            <div className="loginBox">
-                <GoogleLogin
-                    clientId="819657394751-viq5524nlnaulgi12eh0t2jgsvd8jofo.apps.googleusercontent.com"
-                    buttonText="Login"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                    cookiePolicy={'single_host_origin'}
-                />
+        <div class="modal-dialog text-center">
+            <div class="col-sm-8 main-section">
+                <div class="modal-content">
+                    <div class="col-12 user-img">
+                        <img src={LoginIcon} alt="icon" />
+                    </div>
+                    <div class="d-grid gap-2">
+                        <div className="loginBox">
+                            <h4 class="mg-l">Inicie sesión: </h4>
+                            <GoogleLogin
+                                clientId="819657394751-viq5524nlnaulgi12eh0t2jgsvd8jofo.apps.googleusercontent.com"
+                                buttonText="Login"
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                cookiePolicy={'single_host_origin'}
+                            />
+                        </div>                      
+                    </div>
+                </div>
             </div>
-        </div>
+        </div>        
     );
 }
 

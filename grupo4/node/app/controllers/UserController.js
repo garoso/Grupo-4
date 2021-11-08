@@ -13,6 +13,8 @@ module.exports = {
                 where: { email: req.body.email }
             });
 
+            console.log(response);
+
             if (response.length === 0) {
                 let userCreated = await Conexiones.create(
                     {
@@ -24,6 +26,7 @@ module.exports = {
                 res.json(userCreated);
                 return;
             }
+            
             console.log('El usuario ya existe.', response[0].dataValues);
 
             response_role = await Usuarios.findAll({
@@ -46,7 +49,6 @@ module.exports = {
     async edit(req, res) {
         console.log("EDITT");
         console.log(req.body)
-        console.log('req', req.body);
 
         var response = ''
         response = await Usuarios.findAll({
@@ -56,22 +58,29 @@ module.exports = {
         if (response.length === 0) {
             Usuarios.create({
                 nombre: req.body.name,
+                apellido: req.body.lastname,
                 email: req.body.email,
-                telefono: req.body.telefono,
-                direccion: req.body.direccion,
-                role: req.body.role
+                telefono: req.body.phoneNumber,
+                direccion: req.body.address,
+                ciudad: req.body.city,
+                role: parseInt(req.body.role)
             }).then(user => {
-                res.json(user);
+                res.redirect("http://localhost:3000/admin");
             });
         } else {
             Usuarios.update({
-                role: req.body.role
+                nombre: req.body.name,
+                apellido: req.body.lastname,
+                telefono: req.body.phoneNumber,
+                direccion: req.body.address,
+                ciudad: req.body.city,
+                role: parseInt(req.body.role)
             }, {
                 where: {
                     email: req.body.email
                 }
             }).then(result => {
-                res.json(result);
+                res.redirect("http://localhost:3000/admin");
             });
         }        
     },
