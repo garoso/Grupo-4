@@ -2,13 +2,14 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import GoogleLogin from 'react-google-login';
 import cookie from 'react-cookies';
-import auth from "./auth";
 import LoginIcon from '../../images/user.png';
+import useAuthContext from './auth/hooks/useAuthContext';
 import '../../App.css';
 
 const Login = () => {
 
     const history = useHistory();
+    const {login, loginAdmin, logout} = useAuthContext();
 
     const responseGoogle = async (response) => {
         if (response.tokenId) {
@@ -29,20 +30,19 @@ const Login = () => {
                 });
 
                 const content = await user.json();
-                if (content.role === 0){
+                if (content.role === 1){
                     console.log("Vendedor conectado.");
-                    auth.login(() => {
-                        history.push('/vendedor');
-                    });                    
+                    login();
+                    history.push('/vendedor');             
                     return;
-                } else if (content.role === 1) {
+                } else if (content.role === 2) {
                     console.log("Administrador conectado.");
-                    auth.login(() => {
-                        history.push('/admin');
-                    });  
+                    loginAdmin();
+                    history.push('/admin'); 
                     return;
                 }
 
+                logout();
                 console.log("Asignación pendiente.");
                 history.push('/pendiente');
 

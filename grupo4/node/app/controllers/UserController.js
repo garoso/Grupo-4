@@ -7,9 +7,7 @@ module.exports = {
         console.log('req', req);
 
         try {
-            var response = ''
-            var response_role = ''
-            response = await Conexiones.findAll({
+            const response = await Conexiones.findAll({
                 where: { email: req.body.email }
             });
 
@@ -20,7 +18,8 @@ module.exports = {
                     {
                         firstName: req.body.name,
                         lastName: req.body.lastname,
-                        email: req.body.email
+                        email: req.body.email,
+                        role: 0
                     }
                 );
                 res.json(userCreated);
@@ -29,16 +28,12 @@ module.exports = {
             
             console.log('El usuario ya existe.', response[0].dataValues);
 
-            response_role = await Usuarios.findAll({
+            const response_role = await Usuarios.findAll({
                 where: { email: req.body.email }
             });
 
-            if (response_role.length === 0) {
-                res.json({user: response[0].dataValues, role: null});
-                return;
-            }
-
-            res.json({user: response[0].dataValues, role: response_role[0].dataValues.role});           
+            res.json({user: response[0].dataValues, role: response_role[0].dataValues.role});  
+            return;         
 
         } catch (error) {
             console.log(error);
@@ -50,36 +45,38 @@ module.exports = {
         console.log("EDITT");
         console.log(req.body)
 
-        var response = ''
-        response = await Usuarios.findAll({
+        const response = await Usuarios.findAll({
             where: { email: req.body.email }
         });
 
+        const info = {
+            nombre: req.body.name,
+            apellido: req.body.lastname,
+            email: req.body.email,
+            telefono: req.body.phoneNumber,
+            role: parseInt(req.body.role)
+        };
+
         if (response.length === 0) {
-            Usuarios.create({
-                nombre: req.body.name,
-                apellido: req.body.lastname,
-                email: req.body.email,
-                telefono: req.body.phoneNumber,
-                direccion: req.body.address,
-                ciudad: req.body.city,
-                role: parseInt(req.body.role)
-            }).then(user => {
+            Usuarios.create(info).then(user => {
                 res.redirect("http://localhost:3000/admin");
             });
         } else {
-            Usuarios.update({
-                nombre: req.body.name,
-                apellido: req.body.lastname,
-                telefono: req.body.phoneNumber,
-                direccion: req.body.address,
-                ciudad: req.body.city,
-                role: parseInt(req.body.role)
+            Conexiones.update({
+                role: req.body.role
             }, {
                 where: {
                     email: req.body.email
                 }
             }).then(result => {
+                console.log('Conexión updated.');
+            });
+            Usuarios.update(info, {
+                where: {
+                    email: req.body.email
+                }
+            }).then(result => {
+                console.log('Usuario updated.');
                 res.redirect("http://localhost:3000/admin");
             });
         }        
@@ -88,9 +85,7 @@ module.exports = {
     async getUsers(req, res) {
 
         try {
-            var users = ''
-
-            users = await Conexiones.findAll();
+            var users = await Conexiones.findAll();
 
             if (users.length === 0) {
                 return null;

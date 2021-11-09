@@ -2,16 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Navbar from './components/navbar/Navbar'
+import Navbar from './components/navbar/Navbar';
 import reportWebVitals from './reportWebVitals';
+import AuthContextProvider from './components/login/auth/authContext';
 
-const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <React.StrictMode>
-    <Navbar />
-    <App />
+  <React.StrictMode> 
+    <AuthContextProvider>
+      <Navbar />
+      <App />
+    </AuthContextProvider>
   </React.StrictMode>,
-  rootElement
+  document.getElementById("root")
 );
 
 

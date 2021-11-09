@@ -1,24 +1,26 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Switch} from 'react-router-dom';
+import { rutas} from './path';
+import ProtectedRoute from './components/login/routes/ProtectedRoute';
+import PublicRoute from './components/login/PublicRoute';
 import Login from './components/login/Login';
-import ProtectedRoute from './components/login/ProtectedRoute';
-import SignUp from './components/signUp/SignUp.js';
-import Home from './components/home/Home';
-import Pendiente from './components/pendiente/pendiente';
-import CreateUser from './components/createUser/createUser';
-
+import SignUp from './components/admin/createUser.js';
+import Pendiente from './components/views/pendiente';
+import CreatePoduct from './components/product/createProduct';
+import Unauthorized from './components/views/unauthorized';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path='/' component={Login} />
-          <Route exact path='/pendiente' component={Pendiente} />
-          <ProtectedRoute exact path='/admin' component={SignUp} />
-          <ProtectedRoute exact path='/vendedor' component={Pendiente} />
-          <Route path="*" component={() => "404 NOT FOUND"} />
+          <PublicRoute exact path={rutas.LOGIN} component={Login} />
+          <PublicRoute exact path={rutas.PENDIENTE} component={Pendiente} />
+          <PublicRoute exact path={rutas.UNAUTHORIZED} component={Unauthorized} />
+          <ProtectedRoute exact path={rutas.ADMIN} component={SignUp} />
+          <ProtectedRoute exact path={rutas.VENDEDOR} component={CreatePoduct} />
+          <PublicRoute path="*" component={() => "404 NOT FOUND"} />
         </Switch>
       </Router>
     </div>
