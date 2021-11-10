@@ -38,12 +38,12 @@ const Login = () => {
                 if (content.role === 1){
                     console.log("Vendedor conectado.");
                     login();
-                    sleep(500).then(() => { history.push(rutas.VENDEDOR); });     
+                    sleep(1000).then(() => { history.push(rutas.VENDEDOR); });     
                     return;
                 } else if (content.role === 2) {
                     console.log("Administrador conectado.");
                     loginAdmin();
-                    sleep(500).then(() => { history.push(rutas.ADMIN); });
+                    sleep(1000).then(() => { history.push(rutas.ADMIN); });
                     return;
                 }
 

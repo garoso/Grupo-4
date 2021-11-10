@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Switch} from 'react-router-dom';
 import { rutas} from './path';
 import ProtectedRoute from './components/login/routes/ProtectedRoute';
-import PublicRoute from './components/login/PublicRoute';
+import PublicRoute from './components/login/routes/PublicRoute';
 import Login from './components/login/Login';
 import SignUp from './components/admin/createUser.js';
 import Pendiente from './components/views/pendiente';
