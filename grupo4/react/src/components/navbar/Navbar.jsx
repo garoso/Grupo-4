@@ -6,14 +6,27 @@ function Navbar(){
 
   let tabs = null;
   let logoutButton = null;
+
+  const productosMenu = <> 
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/productos" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+              Productos
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/productos">Administrar productos</a>
+                <a class="dropdown-item" href="/productos/register">Registrar productos</a>
+              </div>
+            </li>  
+  </>
+
   const ventasMenu = <> 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="/vendedor" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="/ventas" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
               Ventas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/ventas/admin">Administrar ventas</a>
-                <a class="dropdown-item" href="/ventas/list">Listar ventas</a>
+                <a class="dropdown-item" href="/ventas">Administrar ventas</a>
+                <a class="dropdown-item" href="/ventas/register">Listar ventas</a>
               </div>
             </li>  
   </>
@@ -21,6 +34,7 @@ function Navbar(){
   if (isAdminAuthenticated && !isAuthenticated) {
     tabs = <>
             <a class="nav-item active nav-link" href="/admin">Registro</a>
+            { productosMenu }
             { ventasMenu }
           </>
     logoutButton = <button class="btn btn-outline-danger my-2 my-sm-0" onClick={logout}>Cerrar sesión</button>
@@ -46,7 +60,7 @@ function Navbar(){
       </div>
       { logoutButton }
     </nav>
-  )
+  );
 }
 
 export default Navbar;

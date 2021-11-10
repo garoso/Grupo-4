@@ -20,6 +20,9 @@ function App() {
           <PublicRoute exact path={rutas.UNAUTHORIZED} component={Unauthorized} />
           <ProtectedRoute exact path={rutas.ADMIN} component={SignUp} />
           <ProtectedRoute exact path={rutas.VENDEDOR} component={CreatePoduct} />
+          <ProtectedRoute exact path={rutas.REG_VENTA} component={CreatePoduct} />
+          <ProtectedRoute exact path={rutas.PRODUCTOS} component={CreatePoduct} />
+          <ProtectedRoute exact path={rutas.REG_PRODUCTO} component={CreatePoduct} />
           <PublicRoute path="*" component={() => "404 NOT FOUND"} />
         </Switch>
       </Router>

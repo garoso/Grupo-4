@@ -2,6 +2,9 @@ export const rutas = {
     LOGIN: "/",
     PENDIENTE: "/pendiente",
     UNAUTHORIZED: "/unauthorized",
-    VENDEDOR: "/vendedor",
-    ADMIN: "/admin"
+    ADMIN: "/admin",
+    VENDEDOR: "/ventas",
+    REG_VENTA: "/ventas/register",
+    PRODUCTOS: "/productos",
+    REG_PRODUCTO: "/productos/register"
 }

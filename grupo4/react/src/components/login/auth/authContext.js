@@ -7,9 +7,7 @@ const CLIENT_ID = '819657394751-viq5524nlnaulgi12eh0t2jgsvd8jofo.apps.googleuser
 const LOGIN_ADMIN = 'LOGIN_ADMIN';
 const LOGIN_VENDEDOR = 'LOGIN_VENDEDOR';
 
-
 export const AuthContext = createContext();
-
 export default function AuthContextProvider({children}) {    
 
     const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(window.localStorage.getItem(LOGIN_ADMIN));

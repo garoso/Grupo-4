@@ -4,7 +4,12 @@ import GoogleLogin from 'react-google-login';
 import cookie from 'react-cookies';
 import LoginIcon from '../../images/user.png';
 import useAuthContext from './auth/hooks/useAuthContext';
+import { rutas } from "../../path";
 import '../../App.css';
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 const Login = () => {
 
@@ -33,18 +38,18 @@ const Login = () => {
                 if (content.role === 1){
                     console.log("Vendedor conectado.");
                     login();
-                    history.push('/vendedor');             
+                    sleep(500).then(() => { history.push(rutas.VENDEDOR); });     
                     return;
                 } else if (content.role === 2) {
                     console.log("Administrador conectado.");
                     loginAdmin();
-                    history.push('/admin'); 
+                    sleep(500).then(() => { history.push(rutas.ADMIN); });
                     return;
                 }
 
                 logout();
                 console.log("Asignación pendiente.");
-                history.push('/pendiente');
+                history.push(rutas.PENDIENTE);
 
             } catch (error) {
                 console.log('error', error);
