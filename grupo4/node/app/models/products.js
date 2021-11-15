@@ -14,10 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Products.init({
+    id: {
+      type: DataTypes.BIGINT,
+      primaryKey: true
+    },
     name: DataTypes.STRING,
     valor: DataTypes.DOUBLE,
-    peso: DataTypes.FLOAT,
-    stock: DataTypes.INTEGER,
+    stock: DataTypes.SMALLINT,
     descripcion: DataTypes.TEXT
   }, {
     sequelize,

@@ -4,13 +4,16 @@ const router = express.Router();
 // Importar controladores
 const ProductController = require('./controllers/ProductController');
 const UserController = require('../app/controllers/UserController');
+const VentaController = require('../app/controllers/VentaController');
 
 // Products
-router.post('/create', ProductController.create);
-router.get('/getByName/:name', ProductController.showByKeyWord);
-router.get('productos/:id', ProductController.showById);
-router.patch('productos/:id', ProductController.update);
-router.delete('productos/:id', ProductController.delete);
+router.post('/product/register', ProductController.create);
+router.post('/product/update', ProductController.update);
+router.get('/productos/get', ProductController.getProductos);
+// Ventas
+router.post('/ventas/register', VentaController.create);
+router.post('/ventas/update', VentaController.update);
+router.get('/ventas/get', VentaController.getProductos);
 // Users
 router.post('/addUser', UserController.create);
 router.post('/editClient', UserController.edit);
