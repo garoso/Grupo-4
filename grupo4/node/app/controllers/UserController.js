@@ -99,5 +99,28 @@ module.exports = {
             console.log(error);
             return res.status(500).json({error: 'Ha ocurrido un error.'});
         }
+    },
+
+    async getVendedores(req, res) {
+
+        try {
+            var users = await Usuarios.findAll({
+                where: {
+                    role: 1
+                }
+            });
+
+            if (users.length === 0) {
+                return null;
+            }
+
+            console.log('Los usuarios son:', users);
+
+            res.json({users: users});           
+
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({error: 'Ha ocurrido un error.'});
+        }
     }
 }

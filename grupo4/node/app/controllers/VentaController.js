@@ -1,4 +1,4 @@
-const {Products} = require('../models/index');
+const {Ventas} = require('../models/index');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
@@ -7,12 +7,18 @@ module.exports = {
     // CREATE /api/product/register
     create(req, res) {
         console.log('req', req.body);
-        Products.create({
-            id: Math.floor(Math.random() * Math.floor(Math.random() * Date.now())),     
-            name: req.body.nombre,
-            descripcion: req.body.descripcion,
-            valor: req.body.valor,
-            stock: req.body.stock
+        Ventas.create({
+            id: Math.floor(Math.random() * Math.floor(Math.random() * Date.now())),   
+            total: req.body.cantidad*req.body.valor_producto,
+            fecha: req.body.fecha,
+            cantidad: req.body.cantidad,
+            id_producto: req.body.id_producto,
+            valor_producto: req.body.valor_producto,
+            descripcion_producto: req.body.descripcion_producto,
+            cedula_cliente: req.body.cedula_cliente,
+            nombre_cliente: req.body.nombre_cliente,
+            email_vendedor: req.body.email_vendedor,
+            estado: 0
         }).then(product => {
             res.redirect("http://localhost:3000/ventas/register");
             return;
@@ -23,11 +29,14 @@ module.exports = {
 
     // UPDATE /api/product/update
     update(req, res) {
-        Products.update({          
-            name: req.body.nombre,
-            descripcion: req.body.descripcion,
-            valor: req.body.valor,
-            stock: req.body.stock
+        Ventas.update({             
+            total: req.body.cantidad*req.body.valor_producto,
+            fecha: req.body.fecha,
+            cantidad: req.body.cantidad,
+            cedula_cliente: req.body.cedula_cliente,
+            nombre_cliente: req.body.nombre_cliente,
+            email_vendedor: req.body.email_vendedor,
+            estado: req.body.estado
         }, {
             where: {
                 id: req.body.uuid
@@ -41,9 +50,9 @@ module.exports = {
     },
 
     getVentas(req, res) {
-        Products.findAll()
+        Ventas.findAll()
         .then(result => {
-            res.json({products: result});
+            res.json({ventas: result});
         }).catch(function(err) {
             console.log(err);
         });
@@ -51,7 +60,7 @@ module.exports = {
 
     // DELETE /api/ventas/:id
     delete(req, res) {
-        Products.destroy({
+        Ventas.destroy({
             where: {
                 id: req.params.id
             }

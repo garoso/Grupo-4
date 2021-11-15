@@ -7,7 +7,7 @@ const ProtectedRoute = (props) => {
 
     const {isAuthenticated, isAdminAuthenticated} = useAuthContext();
     const {path} = props;
-    const admin_routes = [rutas.ADMIN, rutas.PRODUCTOS, rutas.REG_PRODUCTO];
+    const admin_routes = [rutas.ADMIN, rutas.PRODUCTOS, rutas.REG_PRODUCTO, rutas.MOD_PRODUCTO];
 
     if (!isAuthenticated && !isAdminAuthenticated) {
         return <Redirect to={rutas.UNAUTHORIZED} />;

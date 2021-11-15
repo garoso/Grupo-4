@@ -22,13 +22,16 @@ encargado de gestionar dicha venta (vendedor)*/
       type: DataTypes.BIGINT,
       primaryKey: true
     },
+    total: DataTypes.DOUBLE,
     cantidad: DataTypes.INTEGER,
-    precio: DataTypes.DOUBLE,
-
-    name: DataTypes.STRING,
-    valor: DataTypes.DOUBLE,
-    stock: DataTypes.SMALLINT,
-    descripcion: DataTypes.TEXT
+    fecha: DataTypes.STRING,
+    id_producto: DataTypes.BIGINT,
+    valor_producto: DataTypes.DOUBLE,
+    descripcion_producto: DataTypes.TEXT,
+    cedula_cliente: DataTypes.INTEGER,
+    nombre_cliente: DataTypes.STRING,
+    email_vendedor: DataTypes.STRING,
+    estado: DataTypes.SMALLINT
   }, {
     sequelize,
     modelName: 'Ventas',

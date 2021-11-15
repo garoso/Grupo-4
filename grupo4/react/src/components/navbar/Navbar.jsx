@@ -28,7 +28,7 @@ function Navbar(){
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href={rutas.VENDEDOR}>Ventas</a>
-                <a class="dropdown-item" href={rutas.REG_VENTA}>Listar ventas</a>
+                <a class="dropdown-item" href={rutas.REG_VENTA}>Registrar ventas</a>
                 <a class="dropdown-item" href={rutas.MOD_VENTA}>Modificar ventas</a>
               </div>
             </li>  
